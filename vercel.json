@@ -1,1 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/success", "destination": "/onboarding/stripe_success/leebi.html" }
+  ]
+}
 
