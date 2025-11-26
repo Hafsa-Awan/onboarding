@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/success", "destination": "/onboarding/stripe_success/leebi.html" }
+    { "source": "/success", "destination": "/stripe_success/leebi.html" }
   ]
 }
 
