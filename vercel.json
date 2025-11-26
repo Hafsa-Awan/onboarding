@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/success", "destination": "stripe_success/leebi.html" }
-  ]
-}
-
