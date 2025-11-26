@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script>
+        // Read query parameter
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get("status");
+
+        if (status === "success") {
+          // Open Card Screen
+          window.location.href = "leebiapp://card";
+        } else {
+          // Open Onboarding Screen
+          window.location.href = "leebiapp://onboarding";
+        }
+    </script>
+</head>
+<body>
+Redirecting you back to the Leebi Taxi Mobie App
+</body>
+</html>
