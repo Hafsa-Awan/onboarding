@@ -7,7 +7,8 @@
         // Read query parameter
         const params = new URLSearchParams(window.location.search);
         const status = params.get("status");
-  document.getElementById("status").innerText = status;
+          const fullQuery = window.location.search;
+  document.getElementById("fullQuery").innerText = status;
         if (status === "success") {
           // Open Card Screen
           window.location.href = "leebiapp://card";
