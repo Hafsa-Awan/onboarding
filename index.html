@@ -7,7 +7,7 @@
         // Read query parameter
         const params = new URLSearchParams(window.location.search);
         const status = params.get("status");
-
+  document.getElementById("status").innerText = status;
         if (status === "success") {
           // Open Card Screen
           window.location.href = "leebiapp://card";
@@ -18,6 +18,10 @@
     </script>
 </head>
 <body>
+     <div class="box">
+        <b>Parsed Status:</b><br>
+        <pre id="status"></pre>
+    </div>
 Redirecting you back to the Leebi Taxi Mobie App
 </body>
 </html>
