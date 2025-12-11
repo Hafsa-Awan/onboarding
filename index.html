@@ -2,6 +2,71 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <title>Stripe Redirect Debug</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h2>Stripe Onboarding Response</h2>
+
+    <p><b>Full Redirect URL:</b></p>
+    <pre id="fullUrl">Loading...</pre>
+
+    <p><b>Query Parameters:</b></p>
+    <pre id="params">Loading...</pre>
+
+    <hr>
+
+    <p>Redirecting to app in <span id="count">3</span> seconds...</p>
+
+    <script>
+        window.onload = function() {
+            // 1️⃣ Show the full redirect URL that Stripe returned
+            const fullUrl = window.location.href;
+            document.getElementById("fullUrl").innerText = fullUrl;
+
+            // 2️⃣ Parse ALL query parameters and show on screen
+            const params = new URLSearchParams(window.location.search);
+            let result = "";
+            params.forEach((value, key) => {
+                result += key + ": " + value + "\n";
+            });
+            document.getElementById("params").innerText = result || "No parameters";
+
+            // 3️⃣ Extract status
+            const status = params.get("status") ?? "unknown";
+
+            // 4️⃣ Countdown before redirect
+            let seconds = 3;
+            const timer = setInterval(() => {
+                seconds--;
+                document.getElementById("count").innerText = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(timer);
+
+                    // 5️⃣ Redirect to App
+                    if (status === "success") {
+                        window.location.href = "leebiapp://card";
+                    } else {
+                        window.location.href = "leebiapp://onboarding";
+                    }
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
     <title>Redirecting…</title>
     <style>
         body { font-family: Arial; padding: 20px; text-align: center; }
@@ -36,3 +101,4 @@
     </div>
 </body>
 </html>
+-->
